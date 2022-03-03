@@ -3,8 +3,8 @@ import EditorSvgDocument from "./EditorSvgDocument";
 import styles from "../styles.css";
 import {useState, useRef} from "react";
 
-const state22 = JSON.parse(localStorage.getItem('state'));
-const state = [{"type":"area","id":1,"vertices":[{"x":76.45703125,"y":357.859375},{"x":78.45703125,"y":304.859375},{"x":279.45703125,"y":267.859375},{"x":424,"y":258},{"x":428.45703125,"y":318.859375}],"event":"seek","seekTime":16,"startTime":{"hour":0,"minute":0,"second":0},"stopTime":{"hour":0,"minute":0,"second":30}}];
+const state = JSON.parse(localStorage.getItem('state'));
+const fallbackState = [{"type":"area","id":1,"vertices":[{"x":76.45703125,"y":357.859375},{"x":78.45703125,"y":304.859375},{"x":279.45703125,"y":267.859375},{"x":424,"y":258},{"x":428.45703125,"y":318.859375}],"event":"seek","seekTime":16,"startTime":{"hour":0,"minute":0,"second":0},"stopTime":{"hour":0,"minute":0,"second":30}}];
 
 export const EDIT_MODES = Object.freeze({
   move: 'move',
@@ -13,7 +13,7 @@ export const EDIT_MODES = Object.freeze({
 });
 
 export default function Editor() {
-  const [areaOverlays, setAreaOverlays] = useState(state);
+  const [areaOverlays, setAreaOverlays] = useState(state || fallbackState);
   const [activeOverlayId, setActiveOverlayId] = useState(null);
   const [editMode, setEditMode] = useState(EDIT_MODES.move);
   const editorControlsRef = useRef();
