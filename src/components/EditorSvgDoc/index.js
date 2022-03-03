@@ -1,5 +1,7 @@
-import { useState, useRef } from "react";
-import ViewPolygon from "./Editor/ViewPolygon";
+import { useRef } from "react";
+import Polygon from "../Editor/Polygon";
+import classNamesFromArray from "../../utils/classNamesFromArray";
+import './index.css';
 
 /**
  * EditorSvgDocument
@@ -14,14 +16,14 @@ export default function EditorSvgDocument(props) {
       backgroundSize: 'contain',
     }}>
       <svg
+        className={classNamesFromArray(['svg-doc', `svg-doc--mode-${editMode}`])}
         ref={ref}
-
         style={{width: 860, height: 480}}>
         <defs>
           <pattern></pattern>
         </defs>
         {overlays.map((overlay) => (
-          <ViewPolygon
+          <Polygon
             svgRef={ref}
             setActiveOverlayId={setActiveOverlayId}
             updateOverlay={updateOverlay}

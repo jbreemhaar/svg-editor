@@ -1,0 +1,12 @@
+.editor__polygon {
+    fill: rgb(255 255 255 / 53%);
+    stroke: black;
+    stroke-width: 2
+}
+.editor__polygon--mode-move {
+    cursor: move;
+}
+
+.editor__polygon--mode-add {
+    cursor: crosshair;
+}

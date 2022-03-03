@@ -1,7 +1,9 @@
 import {useRef} from "react";
-import useDrag from "../../hooks/useDrag";
-import overlayVerticesToPolygonPoint from "../../utils/overlayVerticesToPolygonPoint";
-import {EDIT_MODES} from "../Editor";
+import useDrag from "../../../hooks/useDrag";
+import overlayVerticesToPolygonPoint from "../../../utils/overlayVerticesToPolygonPoint";
+import {EDIT_MODES} from "../../Editor";
+import classNamesFromArray from "../../../utils/classNamesFromArray";
+import './index.css';
 
 /**
  * EditorPolygon
@@ -42,7 +44,7 @@ export default function EditorPolygon(props) {
 
     // we're applying the diff from the original postition to the state
     // if we'd mutate original values (e.g. lastKnownVertice.x + diff in scroll)
-    // we'd be dependant on render cycles.
+    // we'd be dependent on render cycles.
     const vertices  = [...overlay.vertices].map((vertice, idx) => {
       const origVertice = oVertices[idx];
       return ({
@@ -55,11 +57,8 @@ export default function EditorPolygon(props) {
   }
 
   return(
-    <polygon style={{
-      cursor: editMode === EDIT_MODES.move ? 'grab' : 'auto',
-      fill: 'rgb(255 255 255 / 53%)',
-      stroke: 'black',
-      strokeWidth: 2
-    }} ref={ref} points={verticesInPoints} />
+    <polygon
+      className={classNamesFromArray(['editor__polygon', `editor__polygon--mode-${editMode}`])}
+     ref={ref} points={verticesInPoints} />
   );
 }

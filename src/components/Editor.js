@@ -1,5 +1,5 @@
 import EditorControls from "./EditorControls";
-import EditorSvgDocument from "./EditorSvgDocument";
+import EditorSvgDoc from "./EditorSvgDoc";
 import styles from "../styles.css";
 import {useState, useRef} from "react";
 
@@ -11,6 +11,23 @@ export const EDIT_MODES = Object.freeze({
   add: 'add',
   remove: 'remove',
 });
+
+
+
+
+
+// todo ronde hoeken, kijk of dat kan
+// yes: add:modus moet punt kunnen aanklikken om vanaf daar te kunnen adden
+// yes: moving moet cursor andersom
+// yes: punten toevoegen kan niet in de shape zelf
+// yes: bij add modus moet punt ook versleept kunnen worden, en point moet actief worden om vanaf dat punt toe te voegen
+// yes: actieve vertice
+// delete is forbidden icon.
+// reset edit mode op select van overlay
+
+
+// nice to have; keyboard controls
+// nice to have: als je klikt op de lijn bij toevoegen, dan tussen die toevoegen.
 
 export default function Editor() {
   const [areaOverlays, setAreaOverlays] = useState(state || fallbackState);
@@ -73,7 +90,7 @@ export default function Editor() {
 
   return (
     <div className="Editor">
-      <EditorSvgDocument activeOverlayId={activeOverlayId} editMode={editMode} editorControlsRef={editorControlsRef} overlays={areaOverlays} setActiveOverlayId={setActiveOverlayId} updateOverlay={updateOverlay} />
+      <EditorSvgDoc activeOverlayId={activeOverlayId} editMode={editMode} editorControlsRef={editorControlsRef} overlays={areaOverlays} setActiveOverlayId={setActiveOverlayId} updateOverlay={updateOverlay} />
       <EditorControls removeOverlay={removeOverlay} addNew={addNew} editControlsRef={editorControlsRef} editMode={editMode} setEditMode={setEditMode} activeOverlayId={activeOverlayId}/>
     </div>
   );

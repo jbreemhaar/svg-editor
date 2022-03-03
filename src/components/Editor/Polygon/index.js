@@ -1,11 +1,10 @@
-import {useEffect, useState} from "react";
-import overlayVerticesToPolygonPoint from "../../utils/overlayVerticesToPolygonPoint";
-import Polygon from "./Polygon";
+import PolygonEditGroup from "../PolygonEditGroup";
+import NormalPolygon from "../NormalPolygon";
 
 /**
  * View Polgyon
  */
-export default function ViewPolygon(props) {
+export default function Polygon(props) {
   const {overlay, updateOverlay, svgRef, setActiveOverlayId, editorControlsRef, editMode, activeOverlayId} = props;
 
   /**
@@ -18,7 +17,7 @@ export default function ViewPolygon(props) {
   }
 
   if (activeOverlayId === overlay.id) return (
-    <Polygon
+    <PolygonEditGroup
       editMode={editMode}
       editorControlsRef={editorControlsRef}
       svgRef={svgRef}
@@ -29,17 +28,6 @@ export default function ViewPolygon(props) {
   )
 
   return (
-    <g>
-      <polygon
-        onClick={() => setActiveOverlayId(overlay.id)}
-        style={{
-          cursor: 'pointer',
-          fill: 'rgba(0, 0, 0, 0.44)',
-          stroke: '#f7f7f7',
-          strokeWidth: 2
-      }}
-        points={overlayVerticesToPolygonPoint(overlay.vertices)}
-      />
-    </g>
+    <NormalPolygon overlay={overlay} setActiveOverlayId={setActiveOverlayId}/>
   )
 }
