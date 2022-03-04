@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import useDrag from "../../../hooks/useDrag";
 import overlayVerticesToPolygonPoint from "../../../utils/overlayVerticesToPolygonPoint";
-import { EDIT_MODES, EditMode } from "../../Editor";
+import { EditMode } from "../../Editor";
 import classNamesFromArray from "../../../utils/classNamesFromArray";
 import "./index.css";
 import { AreaOverlay, Vertice } from "../../../types/AreaOverlay";
@@ -47,7 +47,7 @@ export default function EditorPolygon(props: Props) {
    * on Move
    */
   function onMove(e: PointerEvent) {
-    if (editMode !== EDIT_MODES.move) return;
+    if (editMode !== EditMode.Move) return;
     const { initX, initY, vertices: oVertices } = initPosRef.current;
     const poX = e.clientX;
     const poY = e.clientY;

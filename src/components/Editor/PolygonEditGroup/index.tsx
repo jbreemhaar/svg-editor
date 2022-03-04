@@ -2,7 +2,7 @@ import { useState, useRef, RefObject } from "react";
 import EditorRect from "../EditorRect";
 import useDrag from "../../../hooks/useDrag";
 import EditorPolygon from "../EditorPolygon";
-import { EDIT_MODES, EditMode } from "../../Editor";
+import { EditMode } from "../../Editor";
 import { AreaOverlay, Vertice } from "../../../types/AreaOverlay";
 
 interface Props {
@@ -31,13 +31,13 @@ export default function PolygonEditGroup(props: Props) {
   function onUp(e: MouseEvent) {
     const target = e.target as Node;
     if (!target) return;
-    if (editMode === EDIT_MODES.remove) return;
+    if (editMode === EditMode.Remove) return;
 
     // if add mode
     // and click is *not* on the rects themselves
     // and the target is part of svg doc OR is svg doc
     if (
-      editMode === EDIT_MODES.add &&
+      editMode === EditMode.Add &&
       !rectGroupRef.current?.contains(target) &&
       (svgRef.current === e.target || svgRef.current?.contains(target))
     ) {
@@ -46,7 +46,7 @@ export default function PolygonEditGroup(props: Props) {
 
     const current = ref.current as SVGGElement | null;
 
-    if (editMode === EDIT_MODES.move) {
+    if (editMode === EditMode.Move) {
       if (current?.contains(target)) return;
       if (editorControlsRef.current?.contains(target)) return;
       exitEditMode(overlayState);

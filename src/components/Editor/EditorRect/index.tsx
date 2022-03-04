@@ -1,5 +1,5 @@
 import useDrag from "../../../hooks/useDrag";
-import { EDIT_MODES, EditMode } from "../../Editor";
+import { EditMode } from "../../Editor";
 import classNamesFromArray from "../../../utils/classNamesFromArray";
 import "./index.css";
 import { Vertice } from "../../../types/AreaOverlay";
@@ -28,7 +28,7 @@ export default function EditorRect(props: Props) {
     activeVertice,
   } = props;
   const isActive = activeVertice === idx;
-  const verticeRectSize = editMode === EDIT_MODES.remove || isActive ? 20 : 10;
+  const verticeRectSize = editMode === EditMode.Remove || isActive ? 20 : 10;
   const { ref } = useDrag({ onMove, onDown }, [activeVertice]);
 
   /**
@@ -36,15 +36,14 @@ export default function EditorRect(props: Props) {
    */
   function onDown() {
     setActiveVertice(idx);
-    if (editMode === EDIT_MODES.remove) onRemovePoint(idx);
+    if (editMode === EditMode.Remove) onRemovePoint(idx);
   }
 
   /**
    * on pointer move
    */
   function onMove(e: MouseEvent) {
-    if ([EDIT_MODES.move, EDIT_MODES.add].includes(editMode))
-      onChangeRect(e, idx);
+    if ([EditMode.Move, EditMode.Add].includes(editMode)) onChangeRect(e, idx);
   }
 
   return (

@@ -29,13 +29,8 @@ export enum EditMode {
   Remove = "remove",
 }
 
-export const EDIT_MODES = Object.freeze({
-  move: "move",
-  add: "add",
-  remove: "remove",
-});
-
 // todo ronde hoeken, kijk of dat kan
+//    - ja, polygons to shape
 // yes: add:modus moet punt kunnen aanklikken om vanaf daar te kunnen adden
 // yes: moving moet cursor andersom
 // yes: punten toevoegen kan niet in de shape zelf
@@ -47,6 +42,9 @@ export const EDIT_MODES = Object.freeze({
 // nice to have; keyboard controls
 // nice to have: als je klikt op de lijn bij toevoegen, dan tussen die toevoegen.
 
+/**
+ * Editor
+ */
 export default function Editor() {
   const [areaOverlays, setAreaOverlays] = useState<AreaOverlay[]>(
     state || fallbackState
