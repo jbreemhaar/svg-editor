@@ -1,19 +1,18 @@
-
 .editor__rect {
-    fill: red;
-    cursor: default;
+  fill: red;
+  cursor: default;
 }
 .editor__rect--active {
-    stroke: black;
-    stroke-width: 2;
+  stroke: black;
+  stroke-width: 2;
 }
 .editor__rect--mode-move {
-    cursor: grab;
+  cursor: grab;
 }
 
 .editor__rect--mode-remove {
-    /**
+  /**
     todo
      */
-    cursor: not-allowed;
+  cursor: not-allowed;
 }

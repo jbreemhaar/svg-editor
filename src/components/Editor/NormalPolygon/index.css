@@ -1,6 +1,6 @@
 .normal-polygon {
-    cursor: pointer;
-    fill: rgba(0, 0, 0, 0.44);
-    stroke: #f7f7f7;
-    stroke-width: 1;
+  cursor: pointer;
+  fill: rgba(0, 0, 0, 0.44);
+  stroke: #f7f7f7;
+  stroke-width: 1;
 }
